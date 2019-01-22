@@ -10,7 +10,7 @@
 // ];
 
 // for (let key in students) {
-//     console.log("Name:", students[key].name, ",", "Cohort", students[key].cohort)
+//     console.log("Name:", students[key].name, ",", "Cohort", students[key].cohort);
 // }
 
 
@@ -27,12 +27,14 @@ let users = {
     ]
 };
 
-//still working on this one.
-for (let user in users){{
-    console.log(user);
+for (let title in users){
+    console.log(title.charAt(0).toUpperCase() + title.slice(1))
+    for(let i = 0; i < users[title].length; i++){
+        var count = users[title][i].first_name + users[title][i].last_name
+        console.log(i + " "+ users[title][i].first_name + " " + users[title][i].last_name + " " + count.length)
+    }
+
     
 }
-    for (var element in employees);{
-    console.log(element);
-    }
-} 
+
+// console.log(users.employees[0].first_name);
