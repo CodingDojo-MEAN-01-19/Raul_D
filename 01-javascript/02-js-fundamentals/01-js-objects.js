@@ -1,17 +1,17 @@
 // 30 minutes max
 
-// let students = [
-//     { name: 'Remy', cohort: 'Jan' },
-//     { name: 'Genevieve', cohort: 'March' },
-//     { name: 'Chuck', cohort: 'Jan' },
-//     { name: 'Osmund', cohort: 'June' },
-//     { name: 'Nikki', cohort: 'June' },
-//     { name: 'Boris', cohort: 'June' }
-// ];
+let students = [
+    { name: 'Remy', cohort: 'Jan' },
+    { name: 'Genevieve', cohort: 'March' },
+    { name: 'Chuck', cohort: 'Jan' },
+    { name: 'Osmund', cohort: 'June' },
+    { name: 'Nikki', cohort: 'June' },
+    { name: 'Boris', cohort: 'June' }
+];
 
-// for (let key in students) {
-//     console.log("Name:", students[key].name, ",", "Cohort", students[key].cohort);
-// }
+for (let key in students) {
+    console.log("Name:", students[key].name, ",", "Cohort", students[key].cohort);
+}
 
 
 let users = {
