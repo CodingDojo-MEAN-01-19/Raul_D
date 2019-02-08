@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>garfield</title>
+</head>
+
+<body>
+    <h1>Details Page for garfield</h1>
+    <img width="500px" src="images/raul-varzar-750436-unsplash.jpg" alt="garfield"></a>
+    <% for (const data in garfield) { %>
+    <div>Favorite Food: <%= garfield[data].favorite_food %></div>
+    <div>Age: <%= garfield[data].age %></div>
+    <div>Sleeping Spots:<%= garfield[data].sleeping_spots %></div>
+    <% } %>
+</body>
+
+</html>

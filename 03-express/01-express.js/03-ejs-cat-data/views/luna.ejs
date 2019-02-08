@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>luna</title>
+</head>
+
+<body>
+    <h1>Details Page for luna</h1>
+    <img width="500px" src="images/jari-hytonen-538885-unsplash.jpg" alt="luna"></a>
+    <% for (const data in luna) { %>
+    <div>Favorite Food: <%= luna[data].favorite_food %></div>
+    <div>Age: <%= luna[data].age %></div>
+    <div>Sleeping Spots:<%= luna[data].sleeping_spots %></div>
+    <% } %>
+</body>
+
+</html>
