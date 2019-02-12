@@ -1,8 +1,6 @@
-
-
-function each(array, beeFree) {
+function each(array, callback) {
 for (let index = 0; index < array.length; index++){
-    beeFree(array[index], index);
+    callback(array[index], index);
 }
 
 };
