@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script>
+        $(document).ready(function(){
+            var socket = io.connect();
+            //we need socket to listen to an event
+            socket.on('numberUpdated', function(number){
+                $('#number').text(number);
+            //socekt.on means it is listening for an event from
+            //the server side. we now instructed the socket to listen for an event 'numberUpdated'
+            //function, what do you want to it to do when it recieved this event from the server? grab the id, $('#number'), it has a .text method and we will pass a number.
+
+            });
+            //capture the button click
+            $('#epic').click(function(){
+                socket.emit('buttonClicked');
+            //when the button is clicked we need to send the information.
+
+            });
+            //let's listen to the reset button click
+            $('#reset').click(function(){
+                socket.emit('reset');
+            })
+        })
+    </script>
+    <title>Epic Button</title>
+</head>
+
+<body class="container">
+    <h1>Epic Button</h1>
+<h3>The button has been pressed <span class="" id="number">0</span> times.</h3>
+<div>
+    <p>Push the Button</p>
+    <button class="btn btn-primary" id="epic">Hit Me</button>
+
+</div>
+<button class="btn btn-warning pull-right" id="reset">Reset</button>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+</body>
+
+</html>
