@@ -25,22 +25,65 @@ WriteResult({ "nInserted" : 1 })
 
 
 Get all students.
-
+> db.students.find();
+{ "_id" : ObjectId("5c63555e5f4b5aebb5729f88"), "name" : "Joseph", "home_state" : "CA", "lucky_number" : 7, "birthday" : { "month" : 1, "day" : 1, "year" : 1973 } }
+{ "_id" : ObjectId("5c6355695f4b5aebb5729f89"), "name" : "Stan", "home_state" : "CA", "lucky_number" : 10, "birthday" : { "month" : 2, "day" : 2, "year" : 1974 } }
+{ "_id" : ObjectId("5c6355735f4b5aebb5729f8a"), "name" : "Sam", "home_state" : "CA", "lucky_number" : 10, "birthday" : { "month" : 5, "day" : 12, "year" : 1990 } }
+{ "_id" : ObjectId("5c63557e5f4b5aebb5729f8b"), "name" : "Lisa", "home_state" : "WA", "lucky_number" : 10, "birthday" : { "month" : 8, "day" : 1, "year" : 1984 } }
+{ "_id" : ObjectId("5c6355845f4b5aebb5729f8c"), "name" : "Sandra", "home_state" : "WA", "lucky_number" : 23, "birthday" : { "month" : 10, "day" : 13, "year" : 1999 } }
 
 Retrieve all students who are from California (San Jose Dojo) or Washington (Seattle Dojo).
+> db.students.find({hom_state:"CA"})
+> db.students.find({home_state:"CA"})
+{ "_id" : ObjectId("5c63555e5f4b5aebb5729f88"), "name" : "Joseph", "home_state" : "CA", "lucky_number" : 7, "birthday" : { "month" : 1, "day" : 1, "year" : 1973 } }
+{ "_id" : ObjectId("5c6355695f4b5aebb5729f89"), "name" : "Stan", "home_state" : "CA", "lucky_number" : 10, "birthday" : { "month" : 2, "day" : 2, "year" : 1974 } }
+{ "_id" : ObjectId("5c6355735f4b5aebb5729f8a"), "name" : "Sam", "home_state" : "CA", "lucky_number" : 10, "birthday" : { "month" : 5, "day" : 12, "year" : 1990 } }
+> db.students.find({home_state:"WA"})
+{ "_id" : ObjectId("5c63557e5f4b5aebb5729f8b"), "name" : "Lisa", "home_state" : "WA", "lucky_number" : 10, "birthday" : { "month" : 8, "day" : 1, "year" : 1984 } }
+{ "_id" : ObjectId("5c6355845f4b5aebb5729f8c"), "name" : "Sandra", "home_state" : "WA", "lucky_number" : 23, "birthday" : { "month" : 10, "day" : 13, "year" : 1999 } }
+> 
+
+
+
 Get all students whose lucky number is:
 greater than 3
+> db.students.find({lucky_number:{$gt:3}})
+{ "_id" : ObjectId("5c63555e5f4b5aebb5729f88"), "name" : "Joseph", "home_state" : "CA", "lucky_number" : 7, "birthday" : { "month" : 1, "day" : 1, "year" : 1973 } }
+{ "_id" : ObjectId("5c6355695f4b5aebb5729f89"), "name" : "Stan", "home_state" : "CA", "lucky_number" : 10, "birthday" : { "month" : 2, "day" : 2, "year" : 1974 } }
+{ "_id" : ObjectId("5c6355735f4b5aebb5729f8a"), "name" : "Sam", "home_state" : "CA", "lucky_number" : 10, "birthday" : { "month" : 5, "day" : 12, "year" : 1990 } }
+{ "_id" : ObjectId("5c63557e5f4b5aebb5729f8b"), "name" : "Lisa", "home_state" : "WA", "lucky_number" : 10, "birthday" : { "month" : 8, "day" : 1, "year" : 1984 } }
+{ "_id" : ObjectId("5c6355845f4b5aebb5729f8c"), "name" : "Sandra", "home_state" : "WA", "lucky_number" : 23, "birthday" : { "month" : 10, "day" : 13, "year" : 1999 } }
+> 
 less than or equal to 10
+> db.students.find({lucky_number:{$lt:10}})
+{ "_id" : ObjectId("5c63555e5f4b5aebb5729f88"), "name" : "Joseph", "home_state" : "CA", "lucky_number" : 7, "birthday" : { "month" : 1, "day" : 1, "year" : 1973 } }
 between 1 and 9 (inclusive)
-Add a field to each student collection called 'interests' that is an ARRAY.  It should contain the following entries: 'coding', 'brunch', 'MongoDB'. Do this in ONE operation.
+
+Add a field to each student collection called 'interests' that is an ARRAY.  It should contain the following entries: 'coding', 'brunch', 'MongoDB'. 
+Do this in ONE operation.
+
 Add some unique interests for each particular student into each of their interest arrays.
+
 Add the interest 'taxes' into someone's interest array.
+> db.students.update({name:"Lisa"},{$push: {interests:"Taxes"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
 Remove the 'taxes' interest you just added.
+> db.students.update({name:"Lisa"},{$pull: {interests:"Taxes"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
 Remove all students who are from California.
+> db.students.remove({home_state:"CA"})
+WriteResult({ "nRemoved" : 3 })
+
 Remove a student by name. 
+
 Remove a student whose lucky number is greater than 5 (JUST ONE)
+
 Add a field to each student collection called 'number_of_belts' and set it to 0.
 Increment this field by 1 for all students in Washington (Seattle Dojo).
 Rename the 'number_of_belts' field to 'belts_earned'
+
 Remove the 'lucky_number' field.
+
 Add a 'updated_on' field, and set the value as the current date.
