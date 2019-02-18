@@ -15,16 +15,8 @@ app.set('views', path.join(__dirname, 'views'));
 mongoose.connect('mongodb://localhost/quote_dojo', { useNewUrlParser: true });
 mongoose.connection.on('connected', () => console.log('You are connected'));
 
-const quoteSchema = new mongoose.Schema({
-  name: String,
-  quote: String,
-},
-  {
-    timestamps: Number
 
-  });
-
-const Quote = mongoose.model('quotes', quoteSchema);
+require('./server/models/quote.js')
 
 
 

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose'),
-quotes = require('../controllers/quotes.js'),
+quotes = require('../controllers/quotes.js'), //pull form the quotes.js file
 Quote = mongoose.model('quotes')
 
 //config
-//exports to the server
+//exports to the server.js
 module.exports = function(app){
 app.get('/', quotes.index)
 
@@ -31,5 +31,5 @@ app.post('/quotes', quotes.quote_post)
 //     });
 //   });
 
-
+//server.js -> config/routes.js -> conrollers/quotes.js
 // }
