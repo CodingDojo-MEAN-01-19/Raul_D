@@ -12,11 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-mongoose.connect('mongodb://localhost/quote_dojo', { useNewUrlParser: true });
-mongoose.connection.on('connected', () => console.log('You are connected'));
+
+//connect to db
 
 
-require('./server/models/quote.js')
+//look for models
+require('./server/config/mongoose');
 
 
 
