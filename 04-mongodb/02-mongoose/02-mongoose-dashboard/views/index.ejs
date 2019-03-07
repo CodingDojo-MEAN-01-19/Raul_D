@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Index</title>
+</head>
+
+<body>
+  <h1>Index Page!</h1>
+  <a href="/new">Create new Chicken</a>
+  <!-- Display all dogs -->
+  <% for (const chick in chickens) { %>
+  <%= chick.name %>
+    <p>Name: <a href="/<%= chick._id %>"><%= chickens.name %></a>
+    <a href="/<%= chick._id %>/edit/"><button>Edit Chicken</button></a>
+    <form action="/<%= chick._id %>/delete/" method='post'>
+      <input type="submit" value="Delete">
+    </form>
+  </p>
+  <% } %>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Edit</title>
+</head>
+
+<body>
+  <h1>Edit #<%= chicken.name %>!</h1>
+  <form action="/<%= chicken.id %>" method='post'>
+    Name: <input type="text" name="name" value="<%= chicken.name %>">
+    Weight: <input type="text" name="weight" value="<%= chicken.weight %>">
+    Color: <input type="text" name="color" value="<%= chicken.color %>">
+    <input type="submit" value="Edit chicken!">
+  </form>
+  <a href="/">Home</a>
+</body>
+
+</html>

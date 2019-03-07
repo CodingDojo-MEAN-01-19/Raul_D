@@ -1,7 +1,5 @@
 const express = require("express");
-
 const path = require("path");
-
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -13,6 +11,7 @@ app.use(session({
     cookie: { maxAge: 60000 }
 }))
 
+const io = require('socket.io')(server);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "/node_modules/bootstrap/dist")));
@@ -43,10 +42,11 @@ app.post('/result', function (req, res) {
 
 
 
-app.listen(3000, function () {
+var server = app.listen(3000, function () {
     console.log("listening on port 3000");
 });
 
+var route = require('./routes/index.js')(app, server);
 
 //create html form
 //set up index route

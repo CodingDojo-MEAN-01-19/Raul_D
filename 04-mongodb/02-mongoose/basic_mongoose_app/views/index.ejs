@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mongoose form</title>
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+<!-- tip to easily see objects printed in full instead of [object Object] -->
+<% JSON.stringify(messages) %>
+<!-- based on the structure of your messages, determine how to display them -->
+<% if(messages.registration) { %>
+<% for (var x of messages.registration) { %>
+<h3><%= x %></h3>
+<% } %>
+<% } %>
+      <form action="/users" method="POST">
+        <br>
+        Name: <input type="text" name="name" id="">
+        <br>
+        Age: <input type="text" name="age" id="">
+        <br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
